@@ -18,6 +18,8 @@
 .image {
   max-width: 30em;
   object-fit: contain;
+  width: auto;
+  height: auto;
 }
 
 .title {
