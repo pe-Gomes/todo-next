@@ -4,12 +4,14 @@ import {
   orderBy,
   where,
   onSnapshot,
+  doc,
+  deleteDoc,
 } from 'firebase/firestore'
 import { db } from '@/services/firebaseConnection'
 import { ITask } from '@/types/dbTypes'
 
 class DatabaseController {
-  async loadUserTasks(user: string) {
+  async loadUserTasks(user: string | null | undefined): Promise<ITask[]> {
     const tasksRef = collection(db, 'tasks')
     const q = query(
       tasksRef,
@@ -17,7 +19,7 @@ class DatabaseController {
       where('user', '==', user),
     )
 
-    const allUserTasks = [] as ITask[]
+    const allUserTasks: ITask[] = []
 
     onSnapshot(q, (snapshot) => {
       snapshot.forEach((doc) => {
@@ -32,6 +34,12 @@ class DatabaseController {
     })
 
     return allUserTasks
+  }
+
+  async deleteTask(id: string): Promise<void> {
+    const docRef = doc(db, 'tasks', id)
+
+    await deleteDoc(docRef)
   }
 }
 
