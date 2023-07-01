@@ -1,0 +1,124 @@
+.container {
+  width: 100%;
+}
+
+.content {
+  background-color: #0f0f0f;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 3em 0;
+}
+
+.formWrapper {
+  max-width: 1024px;
+  width: 100%;
+  padding: 0 1em;
+}
+
+.title {
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.checkboxArea {
+  margin: 1em 0;
+  display: flex;
+  align-items: center;
+}
+
+.checkboxArea input {
+  width: 18px;
+  height: 18px;
+}
+
+.checkboxArea label {
+  margin-left: 8px;
+  color: #fff;
+}
+
+.button {
+  width: 100%;
+  border: none;
+  color: #fff;
+  background-color: #3183ff;
+  padding: 12px 0;
+
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.taskWrapper {
+  margin: 2em auto 0 auto;
+  padding: 0 1em;
+  width: 100%;
+  max-width: 1024px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.taskWrapper a {
+  text-decoration: none;
+  color: #0f0f0f;
+}
+
+.taskWrapper h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 14px;
+}
+
+.task {
+  margin-bottom: 14px;
+  line-height: 150%;
+  
+  display: flex;
+  flex-direction: column;
+  border: 1.5px solid #909090;
+  border-radius: 4px;
+  padding: 1em;
+}
+
+.tagWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: .5em;
+}
+
+.tag {
+  background-color: #3183ff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.shareButton, .trashButton {
+  background: transparent;
+  border: 0;
+  margin: 0 8px;
+  cursor: pointer;
+
+  transition: all 0.4s;
+}
+
+.shareButton:hover, .trashButton:hover {
+  transform: scale(1.08);
+}
+
+.taskContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.taskContent p {
+  white-space: pre-wrap;
+}
