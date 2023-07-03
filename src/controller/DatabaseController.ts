@@ -6,6 +6,7 @@ import {
   onSnapshot,
   doc,
   deleteDoc,
+  getDoc,
 } from 'firebase/firestore'
 import { db } from '@/services/firebaseConnection'
 import { ITask } from '@/types/dbTypes'
@@ -40,6 +41,26 @@ class DatabaseController {
     const docRef = doc(db, 'tasks', id)
 
     await deleteDoc(docRef)
+  }
+
+  async fetchTaskById(id: string): Promise<ITask> {
+    const docRef = doc(db, 'tasks', id)
+    const snapshot = await getDoc(docRef)
+
+    if (snapshot.data() === undefined || !snapshot.data()?.public) {
+      throw Error('Internal server error')
+    }
+
+    const milliseconds = snapshot.data()?.createdAt?.seconds * 1000
+    const task = {
+      id,
+      task: snapshot.data()?.task,
+      createdAt: new Date(milliseconds).toLocaleDateString(),
+      public: snapshot.data()?.public,
+      user: snapshot.data()?.user,
+    }
+
+    return task
   }
 }
 
