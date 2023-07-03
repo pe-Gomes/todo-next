@@ -4,5 +4,5 @@ export interface ITask {
   user: string
   public: boolean
   task: string
-  createdAt: Date
+  createdAt: Date | string
 }
